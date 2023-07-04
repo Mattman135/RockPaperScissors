@@ -11,31 +11,57 @@ function humanSelection() {
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return "It's a tie!"
+        return "tie"
     } else if (playerSelection === "rock") {
         if (computerSelection === "scissor") {
-            return "You win! Rock smashes scissor.";
+            return "human";
         } else {
-            return "You lose! Paper covers rock.";
+            return "computer";
         }
     } else if (playerSelection === "paper") {
         if (computerSelection == "rock") {
-            return "You win! Paper covers rock.";
+            return "human";
         } else {
-            return "You lose! Scissor cut's paper.";
+            return "computer";
         }
     } else if (playerSelection === "scissor") {
         if (computerSelection === "paper") {
-            return "You win! Scissor cut's paper";
+            return "human";
         } else {
-            return "You lose! Rock smashes scissor."
+            return "computer";
         }
     }
 }
-   
-const playerSelection = humanSelection();
-const computerSelection = getComputerChoice();
 
-console.log(playerSelection);
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let humanPoints = 0;
+    let computerPoints = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = humanSelection();
+        const computerSelection = getComputerChoice();
+        console.log("Human chosed: ", playerSelection, "and computer chosed: ", computerSelection);    
+
+
+        round = playRound(playerSelection, computerSelection);
+        if (round === "human") {
+            humanPoints++;
+            console.log("Human is the winner of the round with: ", humanPoints, "points.")
+        } else if (round === "computer") {
+            computerPoints++;
+            console.log("Computer is the winner of this round with: ", computerPoints, "points.")
+        } else {
+            console.log("It's a tie!")
+        }
+    }
+
+    if (humanPoints === computerPoints) {
+        console.log("Aaaand it's a tie :(");
+    } else if (humanPoints > computerPoints) {
+        console.log("We have a winner...Huuuuuuuuuman!");
+    } else {
+        console.log("Nooo...The computer won :(");
+    }
+}
+
+game();
