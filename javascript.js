@@ -1,12 +1,7 @@
+// FUNCTIONS
 function getComputerChoice() {
     let arr = ["rock", "paper", "scissor"];
     return arr[Math.floor(Math.random() * arr.length)]
-}
-
-function humanSelection() {
-    selection = prompt("What do you choose? Rock, paper or scissor?")
-    selection = selection.toLowerCase();
-    return selection;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -33,35 +28,24 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    let humanPoints = 0;
-    let computerPoints = 0;
 
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = humanSelection();
+// Soundrecords: https://samplefocus.com/samples/round-1-fight
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+
+        //console.log(button.id);
+        // how do I make it clickable only once?
+        
+        const playerSelection = button.id;
         const computerSelection = getComputerChoice();
-        console.log("Human chosed: ", playerSelection, "and computer chosed: ", computerSelection);    
 
+        console.log("Human choose:", playerSelection, "and computer choose:", computerSelection);
+        const result = playRound(playerSelection, computerSelection);
+        console.log(result);
 
-        round = playRound(playerSelection, computerSelection);
-        if (round === "human") {
-            humanPoints++;
-            console.log("Human is the winner of the round with: ", humanPoints, "points.")
-        } else if (round === "computer") {
-            computerPoints++;
-            console.log("Computer is the winner of this round with: ", computerPoints, "points.")
-        } else {
-            console.log("It's a tie!")
-        }
-    }
-
-    if (humanPoints === computerPoints) {
-        console.log("Aaaand it's a tie :(");
-    } else if (humanPoints > computerPoints) {
-        console.log("We have a winner...Huuuuuuuuuman!");
-    } else {
-        console.log("Nooo...The computer won :(");
-    }
-}
-
-game();
+        document.getElementById("result").innerHTML = "The winner of the round is: " + result;
+    });
+});
