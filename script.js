@@ -1,10 +1,10 @@
 // Declare variables
-const buttons = document.querySelectorAll('.choices>button')
+const buttons = document.querySelectorAll('button')
 const choices = ["rock", "paper", "scissors"];
 
-var numberOfPlayedRounds = 0
-var humanPoints = 0
-var computerPoints = 0
+let numberOfPlayedRounds = 0
+let humanPoints = 0
+let computerPoints = 0
 
 // FUNCTIONS
 function getComputerChoice() {
@@ -53,6 +53,18 @@ function checkWinner(humanPoints, computerPoints) {
     }
 }
 
+function newGame() {
+    numberOfPlayedRounds = 0
+    humanPoints = 0
+    computerPoints = 0
+    document.getElementById('round').innerHTML = numberOfPlayedRounds
+    document.getElementById('humanPoints').innerHTML = humanPoints
+    document.getElementById('computerPoints').innerHTML = computerPoints
+    document.querySelector('#rock').disabled = false
+    document.querySelector('#paper').disabled = false
+    document.querySelector('#scissors').disabled = false
+}
+
 function gameOver() {
     document.querySelector('#rock').disabled = true
     document.querySelector('#paper').disabled = true
@@ -67,21 +79,26 @@ function game() {
     buttons.forEach((button) => {
         
         button.addEventListener('click', () => {
-            const playerSelection = button.id
-            const computerSelection = getComputerChoice()
+            if (button.id === "playAgain") {
+                newGame()
+            } else {
+                const playerSelection = button.id
+                const computerSelection = getComputerChoice()
 
-            const result = playRound(playerSelection, computerSelection)
+                const result = playRound(playerSelection, computerSelection)
 
-            increasePoints(result)
-            numberOfPlayedRounds++
+                increasePoints(result)
+                numberOfPlayedRounds++
 
-            document.getElementById('round').innerHTML = numberOfPlayedRounds
-            document.getElementById('humanPoints').innerHTML = humanPoints
-            document.getElementById('computerPoints').innerHTML = computerPoints
+                console.log(numberOfPlayedRounds)
 
-            document.getElementById('round').style = "font-size; 2rem"
+                document.getElementById('round').innerHTML = numberOfPlayedRounds
+                document.getElementById('humanPoints').innerHTML = humanPoints
+                document.getElementById('computerPoints').innerHTML = computerPoints
 
-            if (numberOfPlayedRounds == 3) gameOver()
+                if (numberOfPlayedRounds == 3) gameOver()
+            }
+            
         })
     })
 }
