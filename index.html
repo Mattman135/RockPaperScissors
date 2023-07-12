@@ -5,14 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="javascript.js" defer></script>
+    <script src="script.js" charset="UTF-8" defer></script>
 </head>
 <body>
     <h1>Rock, paper or scissors?</h1>
-    <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissor">scissor</button>
-    <p>Result:</p>
-    <div id="result"></div>
+    <h2>Round <span id="round">0</span></h2>
+
+    <div class="points">
+        Human <span id="humanPoints">0</span>
+        Computer <span id="computerPoints">0</span>
+    </div>
+
+    <div class="result">
+        Final result: <span id="result"></span>
+    </div>
+
+    <div class="choices">
+        <button id="rock">🪨</button>
+        <button id="paper">🧻</button>
+        <button id="scissors">✂️</button>
+    </div>
+    
+    <footer><button id="playAgain">Play again</button></footer>
+    <audio src="possessed-laugh-94851.mp3"></audio>
 </body>
 </html>
