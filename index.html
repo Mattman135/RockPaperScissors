@@ -8,26 +8,57 @@
     <script src="script.js" charset="UTF-8" defer></script>
 </head>
 <body>
-    <h1>Rock, paper or scissors?</h1>
-    <p>Best out of three rounds</p>
-    <h2>Round <span id="round">0</span></h2>
+    <header class="header">
+        <h1>ROCK PAPER SCISSORS</h1>
+    </header>
+    <main class="main">
+        <div class="rules">
+            <div>
+                <h2>Rules</h2>
+                <p>The three choices are rock, paper or scissors.</p>
+                <p>- Rock beats scissors</p>
+                <p>- Paper beats rock</p>
+                <p>- Scissors beats paper</p>
+                <p>Good luck!</p>
+            </div>
+        </div>
+        <div class="game">
+            <p id="p1">Make your choice</p>
+            <p id="p2">Best out of five rounds takes the win</p>
+            <p id="final_result"></p>
+            <div class="result" id="result">
+                <div>
+                    <div class="humanChoice" id="humanChoice">?</div>
+                    <div class="humanResult">
+                        <p>Human: <span id="humanPoints">0</span></p> 
+                    </div>
+                </div>
+                <div>
+                    <div class="computerChoice" id="computerChoice">?</div>
+                    <div class="computerResult">
+                        <p>Computer: <span id="computerPoints">0</span></p>                        
+                    </div>
+                </div>
+            </div>    
 
-    <div class="points">
-        Human <span id="humanPoints">0</span>
-        Computer <span id="computerPoints">0</span>
-    </div>
-
-    <div class="result">
-        Final result: <span id="result"></span>
-    </div>
-
-    <div class="choices">
-        <button id="rock">🪨</button>
-        <button id="paper">🧻</button>
-        <button id="scissors">✂️</button>
-    </div>
-    
-    <button id="playAgain">Play again</button>
-    <audio src="possessed-laugh-94851.mp3"></audio>
+            <div class="choices">
+                <button type="button" class="rock" id="rock">🪨</button>
+                <button type="button" class="paper" id="paper">🧻</button>
+                <button type="button" class="scissors" id="scissors">✂️</button>
+            </div>
+        </div>
+        <div class="play_again">
+            <button type="button" id="play_again">Play Again</button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>Copyright © 2023 Mattman135
+            <a href="https://github.com/Mattman135" rel="noopener" target="_blank">
+                <img alt="github" src="github-mark-white.png"/>
+            </a>
+        </p>
+    </footer>
+    <audio id="computerWin" src="evil-laugh-49831.mp3"></audio>
+    <audio id="humanWin" src="short-crowd-cheer-6713.mp3"></audio>
 </body>
 </html>
